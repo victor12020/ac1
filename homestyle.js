@@ -2,9 +2,14 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
+const app = express;
+
 app.use(bodyParser.json());
 const port = 3000;
-mongoose.connect("mongodb://127.0.0.1:27017/dbvida", {  useNewUrlParser: true,  useUnifiedTopology: true,});
+mongoose.connect("mongodb://127.0.0.1:27017/homestyle",{  
+  useNewUrlParser: true,  
+  useUnifiedTopology: true,
+});
 
 const UsuarioSchema = new mongoose.Schema({  
   email: { type: String, required: true },  
@@ -30,10 +35,9 @@ app.post("/cadastroUsuario", async (req, res) =>{
      senha: senha
    })
 try {
-  const newUsuario = await await usuario.save();    
+  const newUsuario = await usuario.save();    
   res.json({ error: null, msg: "Cadastro ok", UsuarioId: newUsuario._id });  
 } catch (error) {}})
-})
 
 app.post("/cadastroProdutoDecoracao", async (req, res) =>{
    const id_produtodecoracao = req.body.id_produtodecoracao;
@@ -42,17 +46,16 @@ app.post("/cadastroProdutoDecoracao", async (req, res) =>{
    const dataFabricacao = req.body.dataFabricacao;
    const quantidadeEstoque = req.body.quantidadeEstoque;
    const produto = new Produto({ 
-     id_produtodecoracao = id_produtodecoracao,
-     descricao = descricao,
-     fornecedor = fornecedor,
-     dataFabricacao = dataFabricacao,
-     quantidadeEstoque = quantidadeEstoque,
+     id_produtodecoracao: id_produtodecoracao,
+     descricao: descricao,
+     fornecedor: fornecedor,
+     dataFabricacao: dataFabricacao,
+     quantidadeEstoque: quantidadeEstoque,
    })
 try {
-  const newProduto = await await produto.save();    
+  const newProduto = await produto.save();    
   res.json({ error: null, msg: "Cadastro ok", ProdutoId: newProduto._id });  
 } catch (error) {}})
-})
 
 app.get("/", async()=>{
 res.sendFile(__dirname + "/index.html")
