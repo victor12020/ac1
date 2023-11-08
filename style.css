@@ -1,0 +1,19 @@
+.logo{
+    margin: 10px;
+    padding-left: 45%;
+}
+header{
+    background-color: gray;
+}
+nav{
+    background-color: gray;
+}
+.img{
+    height: 400px;
+    width: 400px;
+    margin: 20px;
+}
+footer{
+    margin-top: 10px;
+    background-color: gray;
+}

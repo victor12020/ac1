@@ -2,10 +2,17 @@
   "name": "homestyle",
   "version": "1.0.0",
   "description": "",
+<<<<<<< HEAD
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start" : "nodemon ./homestyle.js localhost:3000"
+=======
+  "main": "homestyle.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./homestyle.js localhost:3000"
+>>>>>>> teste
   },
   "keywords": [],
   "author": "",
@@ -13,7 +20,11 @@
   "dependencies": {
     "body-parser": "^1.20.2",
     "express": "^4.18.2",
+<<<<<<< HEAD
     "mongoose": "^7.6.2",
+=======
+    "mongoose": "^8.0.0",
+>>>>>>> teste
     "nodemon": "^3.0.1"
   }
 }

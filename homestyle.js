@@ -37,6 +37,19 @@ app.post("/cadastrousuario", async (req, res) => {
   const email = req.body.email;
   const senha = req.body.senha;
 
+<<<<<<< HEAD
+=======
+  if(email == null || senha == null){
+    return res.status(400).json({error : "Por favor, preencha todos os campos"});
+  }
+
+  const emailExists = await Usuario.findOne({email : email});
+  if(emailExists){
+    return res.status(400).json({error : "O e-mail informado já existe."})
+  }
+
+
+>>>>>>> teste
   const usuario = new Usuario({
     email: email,
     senha: senha,
@@ -55,6 +68,22 @@ app.post("/cadastroprodutodecoracao", async (req, res) => {
   const datafabricacao = req.body.datafabricacao;
   const quantidadeestoque = req.body.quantidadeestoque;
 
+<<<<<<< HEAD
+=======
+  const id_produtodecoracaoExists = await produtoDecoracao.findOne({id_produtodecoracao : id_produtodecoracao});
+  if(id_produtodecoracaoExists){
+    return res.status(400).json({error : "O id informado já existe."})
+  }
+
+  if(quantidadeestoque > 23){
+    return res.status(400).json({error : "a quantidade de estoque foi superado, por isso não é possivel fazer o cadastro."})
+  }
+
+  if(quantidadeestoque <= 0){
+    return res.status(400).json({error : "Por favor digite uma quantidade positiva e menor que 23."})
+  }
+
+>>>>>>> teste
   const produtodecoracao = new produtoDecoracao({
     id_produtodecoracao: id_produtodecoracao,
     descricao: descricao,
@@ -71,7 +100,26 @@ app.post("/cadastroprodutodecoracao", async (req, res) => {
       ProdutocabeloId: newProdutoDecoracao._id,
     });
   } catch (error) {}
+<<<<<<< HEAD
 });
+
+app.get("/", async (req, res) => {
+  res.sendFile(__dirname + "/index.html");
+});
+
+app.listen(port, () => {
+  console.log(`Servidor rodando na porta ${port}`);
+=======
+>>>>>>> teste
+});
+
+app.get("/cadastrousuario", async(req,res)=>{
+  res.sendFile(__dirname + "/cadastrousuario.html")
+})
+
+app.get("/cadastroprodutodecoracao", async(req,res)=>{
+  res.sendFile(__dirname + "/cadastroprodutodecoracao.html")
+})
 
 app.get("/", async (req, res) => {
   res.sendFile(__dirname + "/index.html");
