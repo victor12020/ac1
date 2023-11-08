@@ -36,9 +36,6 @@ const produtoDecoracao = mongoose.model(
 app.post("/cadastrousuario", async (req, res) => {
   const email = req.body.email;
   const senha = req.body.senha;
-
-<<<<<<< HEAD
-=======
   if(email == null || senha == null){
     return res.status(400).json({error : "Por favor, preencha todos os campos"});
   }
@@ -47,9 +44,7 @@ app.post("/cadastrousuario", async (req, res) => {
   if(emailExists){
     return res.status(400).json({error : "O e-mail informado já existe."})
   }
-
-
->>>>>>> teste
+  
   const usuario = new Usuario({
     email: email,
     senha: senha,
@@ -68,8 +63,6 @@ app.post("/cadastroprodutodecoracao", async (req, res) => {
   const datafabricacao = req.body.datafabricacao;
   const quantidadeestoque = req.body.quantidadeestoque;
 
-<<<<<<< HEAD
-=======
   const id_produtodecoracaoExists = await produtoDecoracao.findOne({id_produtodecoracao : id_produtodecoracao});
   if(id_produtodecoracaoExists){
     return res.status(400).json({error : "O id informado já existe."})
@@ -83,7 +76,6 @@ app.post("/cadastroprodutodecoracao", async (req, res) => {
     return res.status(400).json({error : "Por favor digite uma quantidade positiva e menor que 23."})
   }
 
->>>>>>> teste
   const produtodecoracao = new produtoDecoracao({
     id_produtodecoracao: id_produtodecoracao,
     descricao: descricao,
@@ -100,17 +92,6 @@ app.post("/cadastroprodutodecoracao", async (req, res) => {
       ProdutocabeloId: newProdutoDecoracao._id,
     });
   } catch (error) {}
-<<<<<<< HEAD
-});
-
-app.get("/", async (req, res) => {
-  res.sendFile(__dirname + "/index.html");
-});
-
-app.listen(port, () => {
-  console.log(`Servidor rodando na porta ${port}`);
-=======
->>>>>>> teste
 });
 
 app.get("/cadastrousuario", async(req,res)=>{
